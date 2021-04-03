@@ -18,11 +18,12 @@ NULL
 #' @param stride specifies both the width and the stride of the sequence bins / tiles around which to measure homeology and which are returned in the output gMatrix
 #' @param pad the padding around each tile with which to measure sequence homeology
 #' @param rc logical flag specifying whether to provide reverse commplement distance
-#' @author M arcin Imielinski
+#' @author Marcin Imielinski
 #' @export
 #' @return new gPair containing the difference between x and y
 homeology = function(seqs, gr = NULL, stride = 1, pad = 10, rc = FALSE, verbose = FALSE, method = "levenshtein", ignoreCase = TRUE, ...)
 {
+    
   ## short hand for supplying GRanges
   if (is(seqs, 'GRanges'))
   {
@@ -77,7 +78,9 @@ homeology = function(seqs, gr = NULL, stride = 1, pad = 10, rc = FALSE, verbose 
       message('Populating ', length(tiles), ' bins with width ', width(tiles)[1], ' and stride ', width)
     }
 
+  browser()
   tiles$seq = BSgenome::getSeq(seqs, tiles)
+  
 
   if (verbose)
   {
